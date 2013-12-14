@@ -3,12 +3,12 @@
   "description": "Ksanapc platform",
   "version": "0.1.0",
   "devDependencies": {
-
+    "grunt-contrib-uglify": "~0.2.7"
   },
   "dependencies": {
     "grunt": "*",
     "grunt-git": "*",
-    "adm-zip":"*",
+    "adm-zip": "*",
     "grunt-curl": "~1.2.1",
     "grunt-contrib-clean": "*"
   },

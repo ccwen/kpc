@@ -2,3 +2,5 @@ node_modules
 download
 build
 node_webkit
+components
+test

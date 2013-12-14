@@ -1,0 +1,17 @@
+{
+  "name": "kpc",
+  "repo": "yapcheahshen/kpc",
+  "description": "test",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/dom": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ],
+  "remotes": []
+}
