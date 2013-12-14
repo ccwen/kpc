@@ -1,0 +1,18 @@
+module.exports={
+    'win32':{
+      precompile:'https://s3.amazonaws.com/node-webkit/v0.8.2/node-webkit-v0.8.2-win-ia32.zip',
+      zip:'download/win-ia32.zip',
+      path:'node_webkit/win-ia32'
+    },
+    'darwin':{
+      precompile:'https://s3.amazonaws.com/node-webkit/v0.8.2/node-webkit-v0.8.2-osx-ia32.zip',
+      zip:'download/osx-ia32.zip',
+      path:'node_webkit/osx-ia32'
+    },
+    'linux':{
+      node_webkit_precompile:'https://s3.amazonaws.com/node-webkit/v0.8.2/node-webkit-v0.8.2-linux-ia32.zip',
+      zip:'download/linux-ia32.zip',
+      path:'node_webkit/linux-ia32'
+    }
+  }
+  [process.platform];
