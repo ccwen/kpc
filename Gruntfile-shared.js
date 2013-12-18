@@ -7,38 +7,49 @@ module.exports =require('gruntfile')(function(grunt) {
 		'clean':{
 
 		},
-		'uglify': {
-	      options: {
-	        banner: '/* hi<%=grunt.template.today("yyyy-mm-dd")%>*/'
-	      },
-	      build: {
-	        src: 'src/*.js',
-	        dest: 'build/bundle.min.js'
-	      }
-	  },
  		'shell': {
-        nw: {
-            command: nw.bin,
-            options: {
-                stdout: true
-            }        		
+            'run': {
+                command: nw.bin+" --remote-debugging-port=9222 .",
+                options: {
+                    async:true,
+                    stdout: true
+                }        		
+            },
+            'test':{
+            	command:function() {
+            		return "echo abc"+process.cwd();
+            	},
+            	options:{
+            		stdout:true
+            	}
+            },
+            'rebuild':{
+                command: 'component build',
+                options:{
+                    stdout:true,
+                }
+            }
         },
-        test:{
-        	command:function() {
-        		return "echo abc"+process.cwd();
-        	},
-        	options:{
-        		stdout:true
-        	}
+        'watch': {
+            scripts: {
+                files: ['**/*.js','**/*.css','!build/build.js'],
+                tasks: ['shell:rebuild'],
+                options: {
+            
+                },
+            },
         }
-    }
   
   });
   grunt.loadNpmTasks('grunt-git');  
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-shell');
-	grunt.loadNpmTasks('grunt-curl');
-	grunt.registerTask('default', ['shell:test']);
-
+  grunt.registerTask('info','showinfo',function(){
+        console.log('watch')
+  })
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-shell-spawn');
+    grunt.loadNpmTasks('grunt-curl');
+    //grunt.registerTask('default', ['shell:run']);
+    grunt.registerTask('run', ['shell:run','watch']);
 });
