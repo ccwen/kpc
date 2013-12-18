@@ -7,6 +7,8 @@
   "dependencies": {
     "grunt": "*",
     "grunt-git": "*",
+    "colors": "*",
+    "gruntfile":"*",
     "adm-zip": "*",
     "grunt-curl": "~1.2.1",
     "grunt-contrib-clean": "*"
