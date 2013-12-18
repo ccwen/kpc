@@ -4,6 +4,7 @@ module.exports = function(grunt) {
   var nw=require('./gruntjs/grunt-nw');
   var colors = require('colors');
   var tasks = require('./Gruntfile-shared')(grunt);
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     'curl': {
@@ -35,18 +36,16 @@ module.exports = function(grunt) {
         }
       }
 
-    }
+    },
   });
 
-  // Load the plugin that provides the "uglify" task.
- // grunt.loadNpmTasks('grunt-contrib-uglify');
 
   // Default task(s).
   grunt.registerTask('info', 'install information',function(){
     console.log('nw',nw);
   } );
 
-  grunt.registerTask('default', ['shell:run']);
+  grunt.registerTask('default', ['info']);
   
 
   //grunt-unzip is too slow !!!
@@ -56,6 +55,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('installnw', ['curl:node-webkit','unzip-nw']);
   grunt.registerTask('clone', ['clean:yase','gitclone:yase']);
-
+  grunt.registerTask('setup',['installnw','clone'])
 
 };

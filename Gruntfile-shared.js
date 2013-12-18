@@ -17,7 +17,7 @@ module.exports =require('gruntfile')(function(grunt) {
 	      }
 	  },
  		'shell': {
-        run: {
+        nw: {
             command: nw.bin,
             options: {
                 stdout: true
@@ -39,6 +39,6 @@ module.exports =require('gruntfile')(function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-curl');
-	grunt.registerTask('run', ['shell:run']);
+	grunt.registerTask('default', ['shell:test']);
 
 });

@@ -3,7 +3,6 @@
   "description": "Ksanapc platform",
   "version": "0.1.0",
   "devDependencies": {
-    "grunt-contrib-uglify": "~0.2.7"
   },
   "dependencies": {
     "grunt": "*",
@@ -13,6 +12,7 @@
     "grunt-contrib-clean": "*"
   },
   "scripts": {
-    "preinstall": "npm i -g component grunt-cli react-tools"
+    "preinstall": "npm i -g component grunt-cli react-tools",
+    "postinstall":"grunt setup"
   }
 }
