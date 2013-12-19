@@ -1,17 +1,17 @@
 {
-  "name": "kpc",
-  "repo": "yapcheahshen/kpc",
-  "description": "test",
+  "name": "react",
+  "repo": "facebook/react",
+  "description": "facebook react",
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
-    "facebook/react":"*"
+    
   },
   "development": {},
   "license": "MIT",
-  "main": "index.js",
+  "main": "react.min.js",
   "scripts": [
-    "index.js"
+    "react.min.js"
   ],
   "remotes": []
 }
