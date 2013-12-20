@@ -37,6 +37,14 @@ module.exports = function(grunt) {
       }
 
     },
+    'shell':{
+        'component-install': {
+            command: "component install",
+            options: {
+                stdout: true
+            }           
+        }
+    }
   });
 
 
@@ -55,6 +63,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('installnw', ['curl:node-webkit','unzip-nw']);
   grunt.registerTask('clone', ['clean:yase','gitclone:yase']);
-  grunt.registerTask('setup',['installnw','clone'])
+  grunt.registerTask('setup',['installnw','clone','shell:component-install'])
 
 };
