@@ -9,9 +9,9 @@
   },
   "development": {},
   "license": "MIT",
-  "main": "react.min.js",
+  "main": "react-with-addons.js",
   "scripts": [
-    "react.min.js"
+    "react-with-addons.js"
   ],
   "remotes": []
 }

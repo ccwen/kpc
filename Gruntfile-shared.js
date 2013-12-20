@@ -32,12 +32,19 @@ module.exports =require('gruntfile')(function(grunt) {
         },
         'watch': {
             scripts: {
-                files: ['**/*.jsx','**/*.css','!build/build.js'],
-                tasks: ['react:dynamic_mappings','shell:rebuild'],
+                files: ['./index.html','./index.js','**/*.jsx','**/*.css','!build/build.js'],
+                tasks: ['react:dynamic_mappings','shell:rebuild'],//,'uglify'],
                 options: {
             
                 },
             },
+        },
+        'uglify':{
+            build: {
+                files: {
+                    'build/build.min.js': ['build/build.js']
+                }
+            }
         },
         'react':{
             'dynamic_mappings': {
@@ -60,6 +67,7 @@ module.exports =require('gruntfile')(function(grunt) {
   })
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-shell-spawn');
     grunt.loadNpmTasks('grunt-curl');

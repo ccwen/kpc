@@ -5,8 +5,9 @@
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
-    "facebook/react":"*"
+    "component/dom":"*"
   },
+ 
   "development": {},
   "license": "MIT",
   "main": "index.js",

@@ -15,7 +15,8 @@
     "grunt-contrib-jshint": "~0.7.2",
     "grunt-shell": "*",
     "grunt-shell-spawn": "~0.3.0",
-    "grunt-react": "~0.6.0"
+    "grunt-react": "~0.6.0",
+    "grunt-contrib-uglify": "~0.2.7"
   },
   "scripts": {
     "preinstall": "npm i -g component grunt-cli react-tools",
