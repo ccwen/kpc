@@ -1,7 +1,7 @@
 {
   "name": "kpc",
   "description": "Ksanapc platform",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "devDependencies": {},
   "dependencies": {
     "grunt": "*",
@@ -10,13 +10,13 @@
     "gruntfile": "*",
     "adm-zip": "*",
     "grunt-curl": "~1.2.1",
-    "grunt-contrib-clean": "*",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-jshint": "~0.7.2",
     "grunt-shell": "*",
     "grunt-shell-spawn": "~0.3.0",
     "grunt-react": "~0.6.0",
-    "grunt-contrib-uglify": "~0.2.7"
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-task-helper": "~0.3.4"
   },
   "scripts": {
     "preinstall": "npm i -g component grunt-cli react-tools",

@@ -1,7 +1,7 @@
 
 module.exports = function(grunt) {
   // Project configuration.
-  var nw=require('./gruntjs/grunt-nw');
+  var nw=require('./node_script/grunt-nw');
   var colors = require('colors');
   var tasks = require('./Gruntfile-shared')(grunt);
 
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
 
   //grunt-unzip is too slow !!!
   grunt.registerTask('unzip-nw','Unziping ',function(g){
-    require('./gruntjs/grunt-unpack')(nw);
+    require('./node_script/grunt-unpack')(nw);
   });
 
   grunt.registerTask('installnw', ['curl:node-webkit','unzip-nw']);

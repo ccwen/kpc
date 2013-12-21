@@ -1,29 +1,21 @@
 /*
 https://github.com/shama/gruntfile
 */
-module.exports =require('gruntfile')(function(grunt) {
-	var nw=require('./gruntjs/grunt-nw');
-	grunt.initConfig({
-		'clean':{
+var generatedJSFiles=[];
 
-		},
- 		'shell': {
-            'run': {
+module.exports =require('gruntfile')(function(grunt) {
+	var nw=require('./node_script/grunt-nw');
+
+    grunt.initConfig({
+    	'shell': {
+            'runnw': {
                 command: nw.bin+" --remote-debugging-port=9222 .",
                 options: {
                     async:true,
                     stdout: true
                 }        		
             },
-            'test':{
-            	command:function() {
-            		return "echo abc"+process.cwd();
-            	},
-            	options:{
-            		stdout:true
-            	}
-            },
-            'rebuild':{
+            'component-build':{
                 command: 'component build',
                 options:{
                     stdout:true,
@@ -34,7 +26,7 @@ module.exports =require('gruntfile')(function(grunt) {
             scripts: {
                 files: ['./index.html','./index.js','**/*.jsx',
                 '**/*.css','!build/build.js','!build/build.min.js','!build/build.css'],
-                tasks: ['rebuild'],
+                tasks: ['build'],
                 options: {
             
                 },
@@ -48,31 +40,58 @@ module.exports =require('gruntfile')(function(grunt) {
             }
         },
         'react':{
-            'dynamic_mappings': {
-                files: [
-                    {
-                      expand: true,
-                      cwd: 'components',
-                      src: ['**/*.jsx'],
-                      dest: 'components',
-                      ext: '.js'
-                    }
-                ]
+            'jsx2js': {
+                files: [{
+                    expand: true,
+                    cwd: 'components',
+                    src: ['**/*.jsx'],
+                    dest: 'components',
+                    ext:'.js'
+                }]
             }
-        }
-  
-  });
-  grunt.loadNpmTasks('grunt-git');  
-  grunt.registerTask('info','showinfo',function(){
-        console.log('watch')
-  })
+        },
+        'taskHelper': {
+            'getJSX':{
+                options:{
+                    handlerByFileSrc: function(src, dest, options) {
+                        generatedJSFiles.push(dest)
+                    },
+                    async:false
+                },  
+                expand: true,
+                cwd: 'components',
+                src: ['**/*.jsx'],
+                dest: 'components',
+                ext:'.js'
+            }
+        },
+
+    });
+    grunt.loadNpmTasks('grunt-git');  
+
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-shell-spawn');
+    grunt.loadNpmTasks('grunt-task-helper');
     grunt.loadNpmTasks('grunt-curl');
     grunt.loadNpmTasks('grunt-react');
-    grunt.registerTask('rebuild', ['react:dynamic_mappings','shell:rebuild','uglify']);
-    grunt.registerTask('run', ['rebuild','shell:run','watch']);
+
+    grunt.registerTask('removeIntermiateJS','Delete Intermediate JS',function(){
+        var fs=require('fs')
+        for (var i in generatedJSFiles) {
+            fs.unlink(generatedJSFiles[i])
+        }
+    });
+
+    grunt.registerTask('build', 
+        ['taskHelper:getJSX', 
+        'react:jsx2js',      
+        'shell:component-build', 
+        'uglify',            
+        'removeIntermiateJS']);
+
+    grunt.registerTask('run', ['build','shell:runnw','watch']);
+
 });
