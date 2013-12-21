@@ -23,9 +23,11 @@ module.exports = function(grunt) {
     'clean' : {
       'yase':{
         src:['node_modules/yase']
+      },
+      'yadb':{
+        src:['node_modules/yadb']
       }
     },
-
     'gitclone' : {
       'yase': {
         options:{
@@ -34,8 +36,15 @@ module.exports = function(grunt) {
           directory: 'node_modules/yase',
           force:true   
         }
+      },
+      'yadb': {
+        options:{
+          repository: 'https://github.com/yapcheahshen/yadb.git',
+          branch: 'master',
+          directory: 'node_modules/yadb',
+          force:true   
+        }
       }
-
     },
     'shell':{
         'component-install': {
@@ -62,7 +71,8 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('installnw', ['curl:node-webkit','unzip-nw']);
-  grunt.registerTask('clone', ['clean:yase','gitclone:yase']);
+  grunt.registerTask('clone', ['clean:yadb','gitclone:yadb','clean:yase','gitclone:yase']);
   grunt.registerTask('setup',['installnw','clone','shell:component-install'])
 
+  grunt.registerTask('newapp',[]);
 };

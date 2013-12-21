@@ -78,7 +78,7 @@ module.exports =require('gruntfile')(function(grunt) {
     grunt.loadNpmTasks('grunt-curl');
     grunt.loadNpmTasks('grunt-react');
 
-    grunt.registerTask('removeIntermiateJS','Delete Intermediate JS',function(){
+    grunt.registerTask('removeintermediateJS','Delete Intermediate JS',function(){
         var fs=require('fs')
         for (var i in generatedJSFiles) {
             fs.unlink(generatedJSFiles[i])
@@ -90,8 +90,10 @@ module.exports =require('gruntfile')(function(grunt) {
         'react:jsx2js',      
         'shell:component-build', 
         'uglify',            
-        'removeIntermiateJS']);
+        'removeintermediateJS']);
 
     grunt.registerTask('run', ['build','shell:runnw','watch']);
+
+    grunt.registerTask('newcomponent',[]);
 
 });
