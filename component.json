@@ -6,7 +6,6 @@
   "keywords": [],
   "dependencies": {
     "component/dom": "*",
-    "test2/main": "*"
   },
   "development": {},
   "license": "MIT",
