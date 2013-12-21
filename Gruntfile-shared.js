@@ -5,6 +5,7 @@ var generatedJSFiles=[];
 
 module.exports =require('gruntfile')(function(grunt) {
 	var nw=require('./node_script/grunt-nw');
+    var newcomponent=require('./node_script/newcomponent');
 
     grunt.initConfig({
     	'shell': {
@@ -92,8 +93,16 @@ module.exports =require('gruntfile')(function(grunt) {
         'uglify',            
         'removeintermediateJS']);
 
-    grunt.registerTask('run', ['build','shell:runnw','watch']);
+    grunt.registerTask('runmessage','',function(){
+        console.log('ctrl+C to quit')
+    });
+    grunt.registerTask('run', ['build','shell:runnw','runmessage','watch']);
 
-    grunt.registerTask('newcomponent',[]);
+    
+    grunt.registerTask('newcomponent','',function(){
+        var name = grunt.option('name');
+        newcomponent(name);
+    });
+    
 
 });

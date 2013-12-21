@@ -4,6 +4,8 @@ module.exports = function(grunt) {
   var nw=require('./node_script/grunt-nw');
   var colors = require('colors');
   var tasks = require('./Gruntfile-shared')(grunt);
+  var newapp=require('./node_script/newapp');
+  var newcomponent=require('./node_script/newcomponent');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -73,6 +75,15 @@ module.exports = function(grunt) {
   grunt.registerTask('installnw', ['curl:node-webkit','unzip-nw']);
   grunt.registerTask('clone', ['clean:yadb','gitclone:yadb','clean:yase','gitclone:yase']);
   grunt.registerTask('setup',['installnw','clone','shell:component-install'])
-
-  grunt.registerTask('newapp',[]);
+  
+    
+  grunt.registerTask('newapp','Create new kpc app',function(){
+    var name = grunt.option('name');
+    newapp(name);
+    grunt.file.setBase(name);
+    newcomponent(name+'/main');
+    grunt.file.setBase('..');
+    console.log('success, switch to app folder and type')
+    console.log('grunt run')
+  });
 };

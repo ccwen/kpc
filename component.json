@@ -5,9 +5,9 @@
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
-    "component/dom":"*"
+    "component/dom": "*",
+    "test2/main": "*"
   },
- 
   "development": {},
   "license": "MIT",
   "main": "index.js",
