@@ -20,7 +20,7 @@ module.exports=function(name,opts) {
 
 	var indexjsx=
 '/** @jsx React.DOM */\n\n'+
-'//var othercomponent=require("../other"); \n'+
+'//var othercomponent=Require("other"); \n'+
 'var '+componentname+' = React.createClass({\n'+
 '  getInitialState: function() {\n'+
 '    return {bar: "world"};\n'+

@@ -44,6 +44,7 @@ module.exports=function(appname){
 '}';
 
 	var indexjs='React=require("react");\n'+
+							'Require=function(arg){return require("../"+arg)};\n'+
 							'var main=require("main")\n'+
 							'React.renderComponent(main(),document.getElementById("main"));';
 	var indexcss='#main {}';
