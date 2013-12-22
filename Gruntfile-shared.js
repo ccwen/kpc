@@ -90,7 +90,7 @@ module.exports =require('gruntfile')(function(grunt) {
         ['taskHelper:getJSX', 
         'react:jsx2js',      
         'shell:component-build', 
-        'uglify',            
+       // 'uglify',            
         'removeintermediateJS']);
 
     grunt.registerTask('runmessage','',function(){
