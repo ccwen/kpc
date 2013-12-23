@@ -41,7 +41,7 @@ module.exports=function(appname){
 '    "ajacksified/mediator": "*"\n'+
 '  },\n'+
 '  "development": {},\n'+
-'  "paths": ["../components","../kse-ui/components"],\n'+
+'  "paths": ["components","../kse-ui/components","../components"],\n'+
 '  "local": ["facebook/react"],\n'+
 '  "license": "MIT",\n'+
 '  "main": "index.js",\n'+
