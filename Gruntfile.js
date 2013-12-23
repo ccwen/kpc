@@ -28,7 +28,13 @@ module.exports = function(grunt) {
       },
       'yadb':{
         src:['node_modules/yadb']
-      }
+      },
+      'kpc-app-sample':{
+        src:['kpc-app-sample']
+      },
+      'kse-ui':{
+        src:['kse-ui']
+      }      
     },
     'gitclone' : {
       'yase': {
@@ -44,6 +50,22 @@ module.exports = function(grunt) {
           repository: 'https://github.com/yapcheahshen/yadb.git',
           branch: 'master',
           directory: 'node_modules/yadb',
+          force:true   
+        }
+      },
+      'kse-ui': {
+        options:{
+          repository: 'https://github.com/ksanaforge/kse-ui.git',
+          branch: 'master',
+          directory: 'kse-ui',
+          force:true   
+        }
+      },
+      'kpc-app-sample': {
+        options:{
+          repository: 'https://github.com/ksanaforge/kpc-app-sample.git',
+          branch: 'master',
+          directory: 'kpc-app-sample',
           force:true   
         }
       }
@@ -71,12 +93,26 @@ module.exports = function(grunt) {
   grunt.registerTask('unzip-nw','Unziping ',function(g){
     require('./node_script/grunt-unpack')(nw);
   });
+  
+  grunt.registerTask('welcome','welcome message',function() {
+    console.log("install successful".green);
+    console.log("to install demo app, type");
+    console.log(">grunt sample");
+    console.log(">cd kpc-app-sample");
+    console.log(">grunt run");
 
+  });  
+  grunt.registerTask('testsample','test sample',function(){
+    console.log(">cd kpc-app-sample".yellow);
+    console.log(">grunt run".yellow);    
+  })
   grunt.registerTask('installnw', ['curl:node-webkit','unzip-nw']);
   grunt.registerTask('clone', ['clean:yadb','gitclone:yadb','clean:yase','gitclone:yase']);
-  grunt.registerTask('setup',['installnw','clone','shell:component-install'])
+  grunt.registerTask('setup',['installnw','clone','shell:component-install','welcome'])
+
+  grunt.registerTask('sample',['clean:kse-ui','clean:kpc-app-sample','gitclone:kse-ui','gitclone:kpc-app-sample','testsample'])
   
-    
+
   grunt.registerTask('newapp','Create new kpc app',function(){
     var name = grunt.option('name');
     newapp(name);

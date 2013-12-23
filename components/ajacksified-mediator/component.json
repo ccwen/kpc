@@ -1,0 +1,23 @@
+{
+  "name": "mediator",
+  "repo": "ajacksified/mediator",
+  "description": "mediator pattern",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "mediator.js",
+  "scripts": [
+    "mediator.js"
+  ],
+  "remotes": [],
+"repositories": [
+       {
+            "type": "git", 
+            "url": "http://github.com/ajacksified/mediator"
+       }  
+    ]
+}
