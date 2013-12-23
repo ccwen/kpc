@@ -1,7 +1,7 @@
 /*
 https://github.com/shama/gruntfile
 */
-var generatedJSFiles=[];
+var generatedJSFiles=[],generatedJSFiles_shared=[];
 
 module.exports =require('gruntfile')(function(grunt) {
 	var nw=require('./node_script/grunt-nw');
@@ -26,7 +26,10 @@ module.exports =require('gruntfile')(function(grunt) {
         'watch': {
             scripts: {
                 files: ['./index.html','./index.js','**/*.jsx',
-                '**/*.css','!build/build.js','!build/build.min.js','!build/build.css'],
+                './component.json',
+                '../kse-ui/components/**/*.jsx',
+                '**/*.css','!build/build.js','!build/build.min.js'
+                ,'!build/build.css'],
                 tasks: ['build'],
                 options: {
             
@@ -49,6 +52,15 @@ module.exports =require('gruntfile')(function(grunt) {
                     dest: 'components',
                     ext:'.js'
                 }]
+            },
+            'shared':{
+                files: [{
+                    expand: true,
+                    cwd: '../kse-ui/components',
+                    src: ['**/*.jsx'],
+                    dest: '../kse-ui/components',
+                    ext:'.js'
+                }]                
             }
         },
         'taskHelper': {
@@ -64,7 +76,21 @@ module.exports =require('gruntfile')(function(grunt) {
                 src: ['**/*.jsx'],
                 dest: 'components',
                 ext:'.js'
+            },
+            'getJSX_shared':{
+                options:{
+                    handlerByFileSrc: function(src, dest, options) {
+                        generatedJSFiles_shared.push(dest)
+                    },
+                    async:false
+                },  
+                expand: true,
+                cwd: '../kse-ui/components',
+                src: ['**/*.jsx'],
+                dest: '../kse-ui/components',
+                ext:'.js'
             }
+
         },
 
     });
@@ -81,14 +107,19 @@ module.exports =require('gruntfile')(function(grunt) {
 
     grunt.registerTask('removeintermediateJS','Delete Intermediate JS',function(){
         var fs=require('fs')
+        console.log('delete',generatedJSFiles)
         for (var i in generatedJSFiles) {
             fs.unlink(generatedJSFiles[i])
+        }
+        console.log('delete',generatedJSFiles_shared)
+        for (var i in generatedJSFiles_shared) {
+            fs.unlink(generatedJSFiles_shared[i])
         }
     });
 
     grunt.registerTask('build', 
-        ['taskHelper:getJSX', 
-        'react:jsx2js',      
+        ['taskHelper', 
+        'react',
         'shell:component-build', 
        // 'uglify',            
         'removeintermediateJS']);

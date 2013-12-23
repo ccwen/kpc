@@ -33,9 +33,15 @@ module.exports=function(appname){
 '  "description": "hello world",\n'+
 '  "version": "0.0.1",\n'+
 '  "keywords": [],\n'+
-'  "dependencies": {},\n'+
+'  "dependencies": {\n'+
+'    "ksanaforge/boot": "*",\n'+
+'    "ksanaforge/kse": "*",\n'+
+'    "brighthas/bootstrap": "*",\n'+
+'    "component/jquery": "*",\n'+
+'    "ajacksified/mediator": "*"\n'+
+'  },\n'+
 '  "development": {},\n'+
-'  "paths": ["../components"],\n'+
+'  "paths": ["../components","../kse-ui/components"],\n'+
 '  "local": ["facebook/react"],\n'+
 '  "license": "MIT",\n'+
 '  "main": "index.js",\n'+
@@ -43,10 +49,7 @@ module.exports=function(appname){
 '  "styles": ["index.css"]\n'+
 '}';
 
-	var indexjs='React=require("react");\n'+
-							'Require=function(arg){return require("../"+arg)};\n'+
-							'var main=require("main")\n'+
-							'React.renderComponent(main(),document.getElementById("main"));';
+	var indexjs='require("boot");'
 	var indexcss='#main {}';
 	var indexhtml='<html>\n'+
 						'<head>\n'+
