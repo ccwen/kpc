@@ -21,8 +21,15 @@ module.exports =require('gruntfile')(function(grunt) {
                 options:{
                     stdout:true,
                 }
+            },
+            'server':{
+                command: 'node ../node_script/server',
+                options:{
+                    stdout:true,
+                }
             }
         },
+
         'watch': {
             scripts: {
                 files: ['./index.html','./index.js','**/*.jsx',
@@ -97,6 +104,7 @@ module.exports =require('gruntfile')(function(grunt) {
     grunt.loadNpmTasks('grunt-git');  
 
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-shell');
@@ -135,5 +143,5 @@ module.exports =require('gruntfile')(function(grunt) {
         newcomponent(name);
     });
     
-
+    grunt.registerTask('server','run server',['shell:server']);
 });

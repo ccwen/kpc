@@ -10,7 +10,7 @@
   }
 
 	var RPCs={}; //*  key: unique calling id  */
-	
+	if (typeof io=='undefined') io=require("../socketio");
 	var socket = io.connect(window.location.host);
   
 	var returnfromserver=function(res) {

@@ -2,7 +2,7 @@ var rpc=require('./rpc')
 var makeinf=function(name) {
 	return (
 		function(opts,callback) {
-			host.exec(callback,0,"yase",name,opts);
+			rpc.exec(callback,0,"yase",name,opts);
 		});
 }
 var api={};
@@ -32,7 +32,7 @@ api.keyExists=makeinf("keyExists");
 api.enumLocalYdb=makeinf("enumLocalYdb");
 api.sameId=makeinf("sameId");
 
-host.exec(function(err,data){
+rpc.exec(function(err,data){
 	api.version=data;
 },0,"yase","version",{});
 

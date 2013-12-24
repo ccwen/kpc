@@ -17,7 +17,9 @@
     "grunt-shell-spawn": "~0.3.0",
     "grunt-react": "~0.6.0",
     "grunt-contrib-uglify": "~0.2.7",
-    "grunt-task-helper": "~0.3.4"
+    "grunt-task-helper": "~0.3.4",
+    "socket.io": "~0.9.16",
+    "grunt-contrib-copy": "~0.4.1"
   },
   "scripts": {
     "preinstall": "npm i -g component grunt-cli react-tools",

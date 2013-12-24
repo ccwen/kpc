@@ -77,6 +77,14 @@ module.exports = function(grunt) {
                 stdout: true
             }           
         }
+    },
+    'copy':{
+      'socketio-cli':{
+          expand: true, 
+          cwd: 'node_modules/socket.io/node_modules/socket.io-client/dist/', 
+          src: ['socket.io.js'],
+          dest: 'components/socketio-socketio/'
+      }
     }
   });
 
@@ -108,7 +116,7 @@ module.exports = function(grunt) {
   })
   grunt.registerTask('installnw', ['curl:node-webkit','unzip-nw']);
   grunt.registerTask('clone', ['clean:yadb','gitclone:yadb','clean:yase','gitclone:yase']);
-  grunt.registerTask('setup',['installnw','clone','shell:component-install','welcome'])
+  grunt.registerTask('setup',['installnw','clone','shell:component-install','copy:socketio-cli','welcome'])
 
   grunt.registerTask('sample',['clean:kse-ui','clean:kpc-app-sample','gitclone:kse-ui','gitclone:kpc-app-sample','testsample'])
   
