@@ -143,5 +143,11 @@ module.exports =require('gruntfile')(function(grunt) {
         newcomponent(name);
     });
     
-    grunt.registerTask('server','run server',['shell:server']);
+    grunt.registerTask('servermessage','',function(){
+        var appfolder=process.cwd().match(/[\/\\]([^\/\\]*?)$/)[1];
+        console.log("your application can be access from ");
+        console.log(("http://127.0.0.1:2555/"+appfolder).cyan);
+    });
+
+    grunt.registerTask('server','run server',['servermessage','shell:server']);
 });
