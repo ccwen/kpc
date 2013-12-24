@@ -3,7 +3,7 @@ kpc
 
 KsanaPC based on modern workflow
 
-Video Tutorial
+Video Tutorial (in Madarin)
 https://docs.google.com/document/d/1-5w6IxBsqU5kdpOX9bQyleYBB3mGveywHH4IutlMM6M/pub
 
 setup
