@@ -115,11 +115,11 @@ module.exports =require('gruntfile')(function(grunt) {
 
     grunt.registerTask('removeintermediateJS','Delete Intermediate JS',function(){
         var fs=require('fs')
-        console.log('delete',generatedJSFiles)
+        //console.log('delete',generatedJSFiles)
         for (var i in generatedJSFiles) {
             fs.unlink(generatedJSFiles[i])
         }
-        console.log('delete',generatedJSFiles_shared)
+        //console.log('delete',generatedJSFiles_shared)
         for (var i in generatedJSFiles_shared) {
             fs.unlink(generatedJSFiles_shared[i])
         }
