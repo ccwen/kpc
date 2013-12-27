@@ -37,7 +37,7 @@ module.exports=function(appname){
 '    "ksanaforge/boot": "*",\n'+
 '    "ksanaforge/kse": "*",\n'+
 '    "brighthas/bootstrap": "*",\n'+
-'    "component/jquery": "*",\n'
+'    "component/jquery": "*"\n'+
 '  },\n'+
 '  "development": {},\n'+
 '  "paths": ["components","../kse-ui/components","../components"],\n'+
