@@ -18,4 +18,5 @@ var YaseMixin = {
     }
   }
 }
+
 module.exports=[YaseMixin,SetIntervalMixin]
