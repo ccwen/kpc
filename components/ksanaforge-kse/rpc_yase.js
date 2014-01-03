@@ -31,6 +31,7 @@ api.exist=makeinf("exist");
 api.keyExists=makeinf("keyExists");
 api.enumLocalYdb=makeinf("enumLocalYdb");
 api.sameId=makeinf("sameId");
+api.prepare=makeinf("prepare");
 
 rpc.exec(function(err,data){
 	api.version=data;

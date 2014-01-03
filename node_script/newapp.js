@@ -34,13 +34,15 @@ module.exports=function(appname){
 '  "version": "0.0.1",\n'+
 '  "keywords": [],\n'+
 '  "dependencies": {\n'+
+'    "yadb":"*",\n'+
+'    "yase":"*",\n'+
 '    "ksanaforge/boot": "*",\n'+
 '    "ksanaforge/kse": "*",\n'+
 '    "brighthas/bootstrap": "*",\n'+
 '    "component/jquery": "*"\n'+
 '  },\n'+
 '  "development": {},\n'+
-'  "paths": ["components","../kse-ui/components","../components"],\n'+
+'  "paths": ["components","../kse-ui/components","../components","../node_modules/"],\n'+
 '  "local": ["facebook/react"],\n'+
 '  "license": "MIT",\n'+
 '  "main": "index.js",\n'+
@@ -48,7 +50,7 @@ module.exports=function(appname){
 '  "styles": ["index.css"]\n'+
 '}';
 
-	var indexjs='require("boot");'
+	var indexjs='var boot=require("boot");\nboot("'+appname+'","main","main");';
 	var indexcss='#main {}';
 	var indexhtml='<html>\n'+
 						'<head>\n'+
@@ -57,9 +59,7 @@ module.exports=function(appname){
 						'<link type="text/css" rel="stylesheet" href="build/build.css">\n'+
 						'</head>\n'+
 						'<div id="main"></div>\n'+
-						'<script>\n'+
-						'	require("'+appname+'");\n'+
-						'</script>\n'+
+						'<script src="index.js"></script>\n'+
 						'</html>';
 	var packagejson='{\n'+
 						'  "name": "'+appname+'",\n'+
@@ -79,6 +79,34 @@ module.exports=function(appname){
 						'       }  \n'+
 						'    ]\n'+
 						'}';
+	var chromemain='chrome.app.runtime.onLaunched.addListener(function(launchData) {\n'+
+  			'chrome.app.window.create("index.html", {id:"'+appname+'", bounds: {width: 800, height: 500}}, function(win) {\n'+
+			'win.contentWindow.launchData = launchData;\n'+
+			'});\n'+
+			'});''
+
+	var manifestjson='{\n'+
+		'"name": "'+appname+'",\n'+
+		'"version": "0.1",\n'+
+		'"manifest_version": 2,\n'+
+		'"description": "'+appname+'",\n'+
+		'"icons": { "16": "icons/icon16.png",\n'+
+		'          "48": "icons/icon48.png",\n'+
+       	'	    "128": "icons/icon128.png" },\n'+
+    	'"app": {\n'+
+		'	"background": {\n'+
+		'	"scripts": ["chrome-main.js"]\n'+
+		'	}\n'+
+		'},\n'+
+		'"permissions": [\n'+
+		'"chrome://favicon/",\n'+
+		'"clipboardRead",\n'+
+		'"clipboardWrite",\n'+
+		'"notifications",\n'+
+		'{"fileSystem": ["write", "retainEntries", "directory"]},\n'+
+		'"storage"\n'+
+		']\n'+
+		'}';
 
 	fs.writeFileSync(appname+'/Gruntfile.js',Gruntfile,'utf8');
 	fs.writeFileSync(appname+'/component.json',componentjson,'utf8');
@@ -86,5 +114,7 @@ module.exports=function(appname){
 	fs.writeFileSync(appname+'/package.json',packagejson,'utf8');
 	fs.writeFileSync(appname+'/index.css',indexcss,'utf8');
 	fs.writeFileSync(appname+'/index.html',indexhtml,'utf8');
+	fs.writeFileSync(appname+'/chrome_main.js',indexhtml,'utf8'); //for chrome app
+	fs.writeFileSync(appname+'/manifest.json',indexhtml,'utf8'); //for chrome app
 	fs.mkdirSync(appname+'/components');
 }
