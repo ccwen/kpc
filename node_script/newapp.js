@@ -83,7 +83,7 @@ module.exports=function(appname){
   			'chrome.app.window.create("index.html", {id:"'+appname+'", bounds: {width: 800, height: 500}}, function(win) {\n'+
 			'win.contentWindow.launchData = launchData;\n'+
 			'});\n'+
-			'});''
+			'});'
 
 	var manifestjson='{\n'+
 		'"name": "'+appname+'",\n'+
