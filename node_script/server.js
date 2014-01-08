@@ -19,7 +19,7 @@ var mimeTypes = {
 var spawn = require('child_process').spawn;
 var argv=process.argv;
 
-var port=argv[3] || "2555";  //default port
+var port=argv[3] || "2556";  //default port
 var autostart=!!argv[2];
 var startfolder=argv[2]||"launcher"; 
 var appendhtml=false;

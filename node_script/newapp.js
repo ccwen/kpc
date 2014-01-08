@@ -38,6 +38,7 @@ module.exports=function(appname){
 '    "yase":"*",\n'+
 '    "ksanaforge/boot": "*",\n'+
 '    "ksanaforge/kse": "*",\n'+
+' 	 "ksanaforge/kse-mixins": "*",\n'+
 '    "brighthas/bootstrap": "*",\n'+
 '    "component/jquery": "*"\n'+
 '  },\n'+

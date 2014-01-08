@@ -146,7 +146,7 @@ module.exports =require('gruntfile')(function(grunt) {
     grunt.registerTask('servermessage','',function(){
         var appfolder=process.cwd().match(/[\/\\]([^\/\\]*?)$/)[1];
         console.log("your application can be access from ");
-        console.log(("http://127.0.0.1:2555/"+appfolder).cyan);
+        console.log(("http://127.0.0.1:2556/"+appfolder).cyan);
     });
 
     grunt.registerTask('server','run server',['servermessage','shell:server']);
