@@ -1,0 +1,20 @@
+{
+  "name": "bootstrap-magnify",
+  "repo": "marcaube/bootstrap-magnify",
+  "description": "bootstrap-magnify",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "bootstrap-magnify.js",
+  "scripts": [
+    "bootstrap-magnify.js"
+  ],
+"styles": [
+   "bootstrap-magnify.css"
+  ],
+  "remotes": []
+}
