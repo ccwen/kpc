@@ -6,15 +6,23 @@ module.exports=function(name,opts) {
 		return;
 	}
 
+	var appname=process.cwd().replace(/\\/g,'/');
+	
+	appname=appname.substring(appname.lastIndexOf('/')+1)
+	console.log(appname)
+
+	var foldername=name.replace('/','-');
+
 	var splitted=name.match(/(.*?)\/(.*$)/);
 	if (!splitted) {
-		console.log('format owner/component_name');
-		return;
+		foldername=appname+'-'+name;
+		componentname=name;
+		name=appname+'/'+name;
+	} else {
+		componentname=splitted[2];
 	}
 	
-	var foldername=name.replace('/','-');
-	var componentname=splitted[2];
-	console.log('creating new component',name);
+	console.log('creating new component',foldername);
 	var newfolder='components/'+foldername;
 	fs.mkdirSync(newfolder);
 

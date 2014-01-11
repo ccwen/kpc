@@ -34,6 +34,7 @@ module.exports =require('gruntfile')(function(grunt) {
             scripts: {
                 files: ['./index.html','./index.js','**/*.jsx',
                 './component.json',
+                '**/component.json',
                 '../kse-ui/components/**/*.jsx',
                 '**/*.css','!build/build.js','!build/build.min.js'
                 ,'!build/build.css'],

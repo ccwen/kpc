@@ -34,11 +34,7 @@ module.exports=function(appname){
 '  "version": "0.0.1",\n'+
 '  "keywords": [],\n'+
 '  "dependencies": {\n'+
-'    "yadb":"*",\n'+
-'    "yase":"*",\n'+
 '    "ksanaforge/boot": "*",\n'+
-'    "ksanaforge/kse": "*",\n'+
-' 	 "ksanaforge/kse-mixins": "*",\n'+
 '    "brighthas/bootstrap": "*",\n'+
 '    "component/jquery": "*"\n'+
 '  },\n'+
