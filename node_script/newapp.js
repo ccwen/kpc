@@ -39,7 +39,7 @@ module.exports=function(appname){
 '    "component/jquery": "*"\n'+
 '  },\n'+
 '  "development": {},\n'+
-'  "paths": ["components","../kse-ui/components","../components","../node_modules/"],\n'+
+'  "paths": ["components","../components","../node_modules/"],\n'+
 '  "local": ["facebook/react"],\n'+
 '  "license": "MIT",\n'+
 '  "main": "index.js",\n'+

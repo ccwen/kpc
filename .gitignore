@@ -4,3 +4,5 @@ build
 node_webkit
 components
 test
+pts
+chrome_app
