@@ -13,6 +13,7 @@ var mimeTypes = {
     "jpeg": "image/jpeg",
     "jpg": "image/jpeg",
     "png": "image/png",
+    "svg": "image/svg+xml",
     "js": "application/javascript",
     "css": "text/css"};
 	
