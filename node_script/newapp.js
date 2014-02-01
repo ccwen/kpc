@@ -51,6 +51,7 @@ module.exports=function(appname){
 	var indexcss='#main {}';
 	var indexhtml='<html>\n'+
 						'<head>\n'+
+						'<meta charset="utf-8" />\n'+
 						'<script src="../nodemain.js"></script>\n'+
 						'<script src="build/build.js"></script>\n'+
 						'<link type="text/css" rel="stylesheet" href="build/build.css">\n'+

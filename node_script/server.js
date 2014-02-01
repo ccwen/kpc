@@ -9,7 +9,7 @@ var googlelogin={};
   
 var mimeTypes = {
     "html": "text/html",
-	"htm": "text/html",
+	  "htm": "text/html",
     "jpeg": "image/jpeg",
     "jpg": "image/jpeg",
     "png": "image/png",
