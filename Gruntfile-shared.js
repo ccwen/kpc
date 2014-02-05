@@ -1,7 +1,9 @@
 /*
 https://github.com/shama/gruntfile
 */
-var generatedJSFiles=[],generatedJSFiles_shared=[];
+var generatedJSFiles=[],
+generatedJSFiles_shared=[],
+generatedJSFiles_shared2=[];
 
 module.exports =require('gruntfile')(function(grunt) {
 	var nw=require('./node_script/grunt-nw');
@@ -69,7 +71,17 @@ module.exports =require('gruntfile')(function(grunt) {
                     dest: '../kse-ui/components',
                     ext:'.js'
                 }]                
+            },
+            'shared2':{
+                files: [{
+                    expand: true,
+                    cwd: '../ksanadoc/components',
+                    src: ['**/*.jsx'],
+                    dest: '../ksanadoc/components',
+                    ext:'.js'
+                }]                
             }
+
         },
         'taskHelper': {
             'getJSX':{
@@ -97,13 +109,29 @@ module.exports =require('gruntfile')(function(grunt) {
                 src: ['**/*.jsx'],
                 dest: '../kse-ui/components',
                 ext:'.js'
+            },
+            'getJSX_shared2':{
+                options:{
+                    handlerByFileSrc: function(src, dest, options) {
+                        generatedJSFiles_shared2.push(dest)
+                    },
+                    async:false
+                },  
+                expand: true,
+                cwd: '../ksanadoc/components',
+                src: ['**/*.jsx'],
+                dest: '../ksanadoc/components',
+                ext:'.js'
             }
-
         },
+        	
+        "jshint": {
+    		all: [ 'components/**/*.js']
+  		}
 
     });
     grunt.loadNpmTasks('grunt-git');  
-
+	grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -124,11 +152,15 @@ module.exports =require('gruntfile')(function(grunt) {
         for (var i in generatedJSFiles_shared) {
             fs.unlink(generatedJSFiles_shared[i])
         }
+        for (var i in generatedJSFiles_shared2) {
+            fs.unlink(generatedJSFiles_shared2[i])
+        }
     });
 
     grunt.registerTask('build', 
         ['taskHelper', 
         'react',
+        'jshint:all',
         'shell:component-build', 
        // 'uglify',            
         'removeintermediateJS']);

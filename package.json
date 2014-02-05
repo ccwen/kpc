@@ -22,7 +22,7 @@
     "grunt-contrib-copy": "~0.4.1"
   },
   "scripts": {
-    "preinstall": "npm i -g component grunt-cli react-tools",
+    "preinstall": "npm i -g component grunt-cli react-tools jshint",
     "postinstall": "grunt setup"
   }
 }
