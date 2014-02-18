@@ -160,7 +160,7 @@ module.exports =require('gruntfile')(function(grunt) {
     grunt.registerTask('build', 
         ['taskHelper', 
         'react',
-        'jshint:all',
+       // 'jshint:all',
         'shell:component-build', 
        // 'uglify',            
         'removeintermediateJS']);

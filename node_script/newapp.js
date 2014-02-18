@@ -112,7 +112,7 @@ module.exports=function(appname){
 	fs.writeFileSync(appname+'/package.json',packagejson,'utf8');
 	fs.writeFileSync(appname+'/index.css',indexcss,'utf8');
 	fs.writeFileSync(appname+'/index.html',indexhtml,'utf8');
-	fs.writeFileSync(appname+'/chrome_main.js',indexhtml,'utf8'); //for chrome app
-	fs.writeFileSync(appname+'/manifest.json',indexhtml,'utf8'); //for chrome app
+	fs.writeFileSync(appname+'/chrome_main.js',chromemain,'utf8'); //for chrome app
+	fs.writeFileSync(appname+'/manifest.json',manifestjson,'utf8'); //for chrome app
 	fs.mkdirSync(appname+'/components');
 }
